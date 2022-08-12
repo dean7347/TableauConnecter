@@ -90,7 +90,7 @@ public class Main {
 		
 
 		//타코파일 떨어뜨리기
-		um.execCmd("powershell MV ./lib/connector-plugin-sdk/packaged-connector/"+tacoFileName+" "+"./");
+		System.out.println(um.execCmd("powershell MV "+um.sortJARPath("/connector-plugin-sdk/connector-packager/packaged-connector/")+tacoFileName+" "+"./"));
 		System.out.println("생성완료 프로그램 종료");
 		System.exit(0);
 
