@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 import Util.UtillMethod;
@@ -15,7 +16,10 @@ public class Main {
 		String id="";
 		String passwd="";
 		String databasename="";
+		String tacoFileName="postgres_jdbc.taco";
 		UtillMethod um= new UtillMethod();
+		
+		
 		XMLController xc = new XMLController("./src/lib/connector-plugin-sdk/samples/plugins/postgres_jdbc");
 		
 		
@@ -74,7 +78,17 @@ public class Main {
 				+ "powershell .\\.venv\\Scripts\\activate;"
 				+ "powershell python setup.py install;"
 				+ "powershell python -m connector_packager.package ..\\samples\\plugins\\postgres_jdbc"));
+	
 		
+	
+		
+		//xml파일 삭제
+		xc.deleteFile("/connectionMetadata.xml");
+		xc.deleteFile("/connectionFields.xml");
+		
+
+		//타코파일 떨어뜨리기
+		um.execCmd("powershell MV ./lib/connector-plugin-sdk/packaged-connector/"+tacoFileName+" "+"./");
 		System.out.println("생성완료 프로그램 종료");
 		System.exit(0);
 
