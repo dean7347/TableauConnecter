@@ -91,11 +91,15 @@ public class XMLController extends Thread{
 	{
 
 		File file = new File(this.filePath+fileName);
+		
         System.out.println("파일로직"+file.getAbsolutePath().toString());
+        System.gc();
     	if( file.exists() ){
+    		
     		if(file.delete()){
     			System.out.println("파일삭제 성공");
     		}else{
+    			
     			System.out.println("파일삭제 실패");
     		}
     	}else{
