@@ -1,4 +1,0 @@
-DATEPART('quarter', [date2])
-
-DATEPART('quarter', [datetime0])
-

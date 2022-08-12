@@ -1,4 +1,0 @@
-ROUND([int2])
-ROUND([int2], 2)
-round(num0)
-round(num4,1)

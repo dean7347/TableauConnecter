@@ -1,3 +1,0 @@
-ASCII("a")
-ascii(str2)
-ascii(str1)

@@ -1,2 +1,0 @@
-DATEDIFF('week', [date2], #2050-01-01#)
-

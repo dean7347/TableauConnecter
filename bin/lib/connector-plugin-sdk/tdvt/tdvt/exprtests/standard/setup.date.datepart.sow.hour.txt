@@ -1,3 +1,0 @@
-DATEPART('hour', [datetime0], 'monday')
-DATEPART('hour', [datetime0], 'sunday')
-

@@ -1,2 +1,0 @@
-DEGREES([int2])
-degrees(num0)

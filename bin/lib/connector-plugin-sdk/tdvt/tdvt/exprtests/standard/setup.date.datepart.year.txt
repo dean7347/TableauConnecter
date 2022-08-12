@@ -1,2 +1,0 @@
-DATEPART('year', [date2])
-DATEPART('year', [datetime0])

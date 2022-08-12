@@ -1,2 +1,0 @@
-SUM([int0])
-SUM([num4])

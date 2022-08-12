@@ -1,3 +1,0 @@
-MIN("Data", "Tableau")
-MIN(str1, str2)
-MIN(str2, str3)

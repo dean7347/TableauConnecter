@@ -1,2 +1,0 @@
-MAX(str1, str2)
-MAX(str3, str2)

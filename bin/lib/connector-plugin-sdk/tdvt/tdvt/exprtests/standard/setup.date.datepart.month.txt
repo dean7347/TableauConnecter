@@ -1,4 +1,0 @@
-DATEPART('month', [date2])
-
-DATEPART('month', [datetime0])
-

@@ -1,2 +1,0 @@
-FIND([str1], '')
-FIND([str2], '')

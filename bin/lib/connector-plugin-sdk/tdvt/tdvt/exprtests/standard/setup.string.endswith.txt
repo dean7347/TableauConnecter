@@ -1,2 +1,0 @@
-ENDSWITH(str1, "s")
-ENDSWITH(str2, "een")

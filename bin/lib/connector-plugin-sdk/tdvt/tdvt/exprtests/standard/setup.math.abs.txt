@@ -1,2 +1,0 @@
-ABS([int2])
-abs(num0)

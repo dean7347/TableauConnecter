@@ -1,3 +1,0 @@
-DATEDIFF('quarter', [date3], [date2])
-
-DATEDIFF('quarter', DATETIME([date2]), [datetime0])

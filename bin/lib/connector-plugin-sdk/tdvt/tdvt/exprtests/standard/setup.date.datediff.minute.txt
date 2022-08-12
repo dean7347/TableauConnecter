@@ -1,2 +1,0 @@
-DATEDIFF('minute', DATETIME([date2]), [datetime0])
-

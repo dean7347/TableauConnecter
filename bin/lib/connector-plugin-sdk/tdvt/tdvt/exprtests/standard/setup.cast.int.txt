@@ -1,4 +1,0 @@
-INT([int1])
-INT([bool0])
-INT([date0])
-INT([num2])

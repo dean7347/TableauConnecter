@@ -1,2 +1,0 @@
-datepart('year', now()) = datepart('year', now())
-datepart('second', now()) = datepart('second', now())

@@ -14,7 +14,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class XMLController {
+public class XMLController extends Thread{
 	
 	private String filePath="";
 	
@@ -29,36 +29,62 @@ public class XMLController {
 	//커넥션 메타데이터 삭제 생성 로직
 	public boolean renewMetadata(String server, String port,String id,String passwd,String databasename)
 	{
-		if(existFile("/connectionMetadata.xml")) deleteFile("/connectionMetadata.xml");
-		else createConnectionMetadtaAfterDeleteFile(databasename);
-		
+		System.out.println("파일 리뉴얼 로직 시작");
+
+			existDeleteCreate("/connectionMetadata.xml",databasename);
+			existDeleteCreate("/connectionFields.xml",server,port,id,passwd);
 		
 
-		if(existFile("/connectionFields.xml")) deleteFile("/connectionFields.xml");
-		else createConnectionfieldAfterDeleteFile(server,port,id,passwd);
 		
+		System.out.println("파일 리뉴얼 로직 종료");
+		return isSuccessFile("/connectionMetadata.xml","/connectionFields.xml");
+
+
+
 		
-		
-		if(existFile("/connectionMetadata.xml")&&existFile("/connectionMetadata.xml"))
-		{
-			return true;
-		}
-		
-		System.out.println("xml 파일 생성중 오류가 발생했습니다");
-		System.exit(0);
-		return false;
+
 		
 	}
 	
-	//커넥션필드 삭제 생성 로직
+
 	
+	public boolean isSuccessFile(String fileName1,String fileName2)
+	{
+		if(existFile(fileName1)&&existFile(fileName2))
+		{
+			return true;
+		}
+		System.out.println("xml 파일 생성중 오류가 발생했습니다");
+		System.exit(0);
+		return false;
+	}
+	public void existDeleteCreate(String fileName,String databasename)
+	{
+		
+		synchronized(this) {
+			if(existFile(fileName)) deleteFile(fileName);
+			System.out.println("메타데이터 파일 생성중");
+			createConnectionMetadtaAfterDeleteFile(databasename);
+		}
+
+	}
 	
+	public void existDeleteCreate(String fileName,String server,String port,String id,String passwd)
+	{
+		synchronized (this) {
+			if(existFile(fileName)) deleteFile(fileName);
+			System.out.println("커넥션파일 생성중");
+			createConnectionfieldAfterDeleteFile(server,port,id,passwd);
+		}
+
+	}
 	
+	//이그지스트 실행인데 존재하지않습니다가 뜬다? 이로직 안탔음
 	public int deleteFile(String fileName)
 	{
 
 		File file = new File(this.filePath+fileName);
-        
+        System.out.println("파일로직"+file.getAbsolutePath().toString());
     	if( file.exists() ){
     		if(file.delete()){
     			System.out.println("파일삭제 성공");
@@ -66,7 +92,7 @@ public class XMLController {
     			System.out.println("파일삭제 실패");
     		}
     	}else{
-    		System.out.println("파일이 존재하지 않습니다.");
+    		System.out.println("삭제할 파일이 존재하지 않습니다.");
     	}
  
 
@@ -79,6 +105,8 @@ public class XMLController {
 	
 	public int createConnectionMetadtaAfterDeleteFile(String databasename)
 	{
+		
+		
         try
         {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -248,22 +276,12 @@ public class XMLController {
 			System.out.println("파일이 존재합니다");
 			return true;
 		}
-		System.out.println("파일이 존재하지 않습니다 로직 종료");
+		System.out.println("파일이 존재하지 않습니다");
 	
-		
 		
 		return false;
 		
 	}
-	//	파일삭제
-	public int deleteFile()
-	{
-		return 0;
-	}
-	
-	public int createFile()
-	{
-		return 0;
-	}
+
 
 }

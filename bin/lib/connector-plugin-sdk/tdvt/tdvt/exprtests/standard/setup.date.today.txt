@@ -1,2 +1,0 @@
-datepart('year', today()) = datepart('year', today())
-datepart('day', today()) = datepart('day', today())

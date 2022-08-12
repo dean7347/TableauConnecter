@@ -1,4 +1,0 @@
-DATEPART('day', [date2])
-
-DATEPART('day', [datetime0])
-
