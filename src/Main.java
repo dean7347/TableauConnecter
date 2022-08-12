@@ -19,8 +19,10 @@ public class Main {
 		String tacoFileName="postgres_jdbc.taco";
 		UtillMethod um= new UtillMethod();
 		
-		
-		XMLController xc = new XMLController("./src/lib/connector-plugin-sdk/samples/plugins/postgres_jdbc");
+		//ide ./src/lib/connector-plugin-sdk/samples/plugins/postgres_jdbc
+		//jar ./connector-plugin-sdk/samples/plugins/postgres_jdbc
+//		XMLController xc = new XMLController("./src/lib/connector-plugin-sdk/samples/plugins/postgres_jdbc");
+		XMLController xc = new XMLController(um.sortJARPath("/connector-plugin-sdk/samples/plugins/postgres_jdbc"));
 		
 		
 		Scanner sc= new Scanner(System.in);
@@ -36,7 +38,7 @@ public class Main {
 		System.out.println("password를 입력해 주세요");
 		passwd=sc.next();
 		
-		System.out.println("입력정보 확인 \n SERVER : port"+ server+":"+port);
+		System.out.println("입력정보 확인 \n SERVER:port : "+ server+":"+port);
 		System.out.println("ID : "+id);
 		System.out.println("Password :"+passwd);
 		sc.close();
@@ -73,7 +75,7 @@ public class Main {
 		
 
 
-		System.out.println(	um.execCmd("powershell cd ./src/lib/connector-plugin-sdk/connector-packager;"
+		System.out.println(	um.execCmd("powershell cd "+um.sortJARPath("/connector-plugin-sdk/connector-packager")+";"
 				+ "powershell python -m venv .venv;"
 				+ "powershell .\\.venv\\Scripts\\activate;"
 				+ "powershell python setup.py install;"

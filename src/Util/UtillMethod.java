@@ -51,6 +51,18 @@ public class UtillMethod {
 		File file = new File("test.txt");
 		return 0;
 	}
+	public String sortJARPath(String pathString)
+	{
+		final File jarFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+		if(jarFile.isFile()) {
+			return "."+pathString;
+		}
+		{
+			//ide에서 실행되는것
+			return "./src/lib"+pathString;	
+		}
+		
+	}
 	
 	public String execCmd(String cmd) {
 	    try {
