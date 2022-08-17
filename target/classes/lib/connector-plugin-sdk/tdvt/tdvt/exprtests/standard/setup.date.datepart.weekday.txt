@@ -1,0 +1,2 @@
+DATEPART('weekday', [date2])
+DATEPART('weekday', [datetime0])

@@ -1,0 +1,17 @@
+LICENSE
+README.md
+setup.py
+connector_packager/__init__.py
+connector_packager/connector_file.py
+connector_packager/connector_properties.py
+connector_packager/helper.py
+connector_packager/jar_jdk_packager.py
+connector_packager/package.py
+connector_packager/version.py
+connector_packager/xml_parser.py
+connector_packager/xsd_validator.py
+connector_packager.egg-info/PKG-INFO
+connector_packager.egg-info/SOURCES.txt
+connector_packager.egg-info/dependency_links.txt
+connector_packager.egg-info/requires.txt
+connector_packager.egg-info/top_level.txt

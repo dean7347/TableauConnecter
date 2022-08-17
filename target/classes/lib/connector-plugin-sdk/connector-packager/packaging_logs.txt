@@ -1,0 +1,6 @@
+2022-08-12 18:39:17,367 [DEBUG] | Starting Tableau Connector Packaging Version 2.1.0
+2022-08-12 18:39:17,367 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\manifest.xml
+2022-08-12 18:39:17,367 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionFields.xml
+2022-08-12 18:39:17,368 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionMetadata.xml
+2022-08-12 18:39:17,368 [DEBUG] | Error: ..\samples\plugins\postgres_jdbc\connectionResolver.tdr does not exist but is referenced in manifest.xml
+2022-08-12 18:39:17,368 [INFO] | Validation failed. Check C:\Users\JindongKim\Documents\TableauConnecter\src\lib\connector-plugin-sdk\connector-packager\packaging_logs.txt for more information.

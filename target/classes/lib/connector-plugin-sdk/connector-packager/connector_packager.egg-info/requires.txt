@@ -1,0 +1,3 @@
+xmlschema
+defusedxml
+packaging
