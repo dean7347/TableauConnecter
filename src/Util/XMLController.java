@@ -34,13 +34,13 @@ public class XMLController extends Thread{
 	
 	
 	//커넥션 메타데이터 삭제 생성 로직
-	public boolean renewMetadata(String server, String port,String id,String passwd,String databasename)
+	public boolean renewMetadata(String server, String port,String id,String passwd,String databasename,String fileName)
 	{
 		System.out.println("파일 리뉴얼 로직 시작");
 
 			existDeleteCreate("/connectionMetadata.xml",databasename);
 			existDeleteCreate("/connectionFields.xml",server,port,id,passwd);
-		
+			existDeleteManifest("/manifest.xml",fileName);
 
 		
 		System.out.println("파일 리뉴얼 로직 종료");
@@ -64,6 +64,17 @@ public class XMLController extends Thread{
 		System.out.println("xml 파일 생성중 오류가 발생했습니다");
 		System.exit(0);
 		return false;
+	}
+	
+	public void existDeleteManifest(String filePath,String fileName)
+	{
+		
+		synchronized(this) {
+			if(existFile(filePath)) deleteFile(filePath);
+			System.out.println("매니패스트 파일 생성중");
+//			createManifestAfterDeleteFile(fileName);
+		}
+
 	}
 	public void existDeleteCreate(String fileName,String databasename)
 	{
@@ -112,7 +123,198 @@ public class XMLController extends Thread{
 	}
 	
 	
-	
+	public int createManifestAfterDeleteFile(String fileName)
+	{
+		
+		
+        try
+        {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+           
+            Document doc = docBuilder.newDocument();
+            doc.setXmlStandalone(true); //standalone="no" 를 없애준다.
+ 
+            
+            
+            Element cp= doc.createElement("connector-plugin");
+            doc.appendChild(cp);
+            cp.setAttribute("class", "postgres_jdbc");
+            cp.setAttribute("superclass", "jdbc");
+            cp.setAttribute("plugin-version", "0.0.0");
+            cp.setAttribute("name", "PostgreSQL JDBC");
+            cp.setAttribute("version", "18.1");
+            cp.setAttribute("min-version-tableau", "2020.4");
+            
+            
+            Element vi= doc.createElement("vendor-information");
+            cp.appendChild(vi);
+            
+            Element company= doc.createElement("company");
+            vi.appendChild(company);
+            company.setAttribute("name", "BIGXDATA");
+            
+            Element spl= doc.createElement("support-link");
+            vi.appendChild(spl);
+            spl.setAttribute("url", "https://bigxdata.io");
+            
+            Element dd = doc.createElement("driver-download-link");
+            vi.appendChild(dd);
+            dd.setAttribute("url", "https://drivers.example.com");
+            
+            Element cc = doc.createElement("connection-customization");
+            cp.appendChild(cc);
+            cc.setAttribute("class", "postgres_jdbc");
+            cc.setAttribute("enabled", "true");
+            cc.setAttribute("version", "10.0");
+            
+            Element vender = doc.createElement("vendor");
+            cc.appendChild(vender);
+            vender.setAttribute("name", "vendor");
+            
+            Element driver = doc.createElement("driver");
+            cc.appendChild(driver);
+            driver.setAttribute("name", "driver");
+            
+            Element cs = doc.createElement("customizations");
+            cc.appendChild(cs);
+            
+            Element csi= doc.createElement("customization");
+            cs.appendChild(csi);
+            csi.setAttribute("name", "CAP_SELECT_INTO");
+            csi.setAttribute("value", "yes");
+            
+            
+            Element csti= doc.createElement("customization");
+            cs.appendChild(csti);
+            csti.setAttribute("name", "CAP_SELECT_TOP_INTO");
+            csti.setAttribute("value", "yes");
+            
+            Element cctt= doc.createElement("customization");
+            cs.appendChild(cctt);
+            cctt.setAttribute("name", "CAP_CREATE_TEMP_TABLES");
+            cctt.setAttribute("value", "no");
+            
+            Element cqbti= doc.createElement("customization");
+            cs.appendChild(cqbti);
+            cqbti.setAttribute("name", "CAP_QUERY_BOOLEXPR_TO_INTEXPR");
+            cqbti.setAttribute("value", "no");
+            
+            Element cqgbb= doc.createElement("customization");
+            cs.appendChild(cqgbb);
+            cqgbb.setAttribute("name", "CQP_QUERY_GROUP_BY_BOOL");
+            cqgbb.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_GROUP_BY_DEGREE= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_GROUP_BY_DEGREE);
+            CAP_QUERY_GROUP_BY_DEGREE.setAttribute("name", "CAP_QUERY_GROUP_BY_DEGREE");
+            CAP_QUERY_GROUP_BY_DEGREE.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_SORT_BY= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_SORT_BY);
+            CAP_QUERY_SORT_BY.setAttribute("name", "CAP_QUERY_SORT_BY");
+            CAP_QUERY_SORT_BY.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_SUBQUERIES= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_SUBQUERIES);
+            CAP_QUERY_SUBQUERIES.setAttribute("name", "CAP_QUERY_SUBQUERIES");
+            CAP_QUERY_SUBQUERIES.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_TOP_N= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_TOP_N);
+            CAP_QUERY_TOP_N.setAttribute("name", "CAP_QUERY_TOP_N");
+            CAP_QUERY_TOP_N.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_TOP_SAMPLE= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_TOP_SAMPLE);
+            CAP_QUERY_TOP_SAMPLE.setAttribute("name", "CAP_QUERY_TOP_SAMPLE");
+            CAP_QUERY_TOP_SAMPLE.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_TOP_SAMPLE_PERCENT= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_TOP_SAMPLE_PERCENT);
+            CAP_QUERY_TOP_SAMPLE_PERCENT.setAttribute("name", "CAP_QUERY_TOP_SAMPLE_PERCENT");
+            CAP_QUERY_TOP_SAMPLE_PERCENT.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_WHERE_FALSE_METADATA= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_WHERE_FALSE_METADATA);
+            CAP_QUERY_WHERE_FALSE_METADATA.setAttribute("name", "CAP_QUERY_WHERE_FALSE_METADATA");
+            CAP_QUERY_WHERE_FALSE_METADATA.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_SUBQUERIES_WITH_TOP= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_SUBQUERIES_WITH_TOP);
+            CAP_QUERY_SUBQUERIES_WITH_TOP.setAttribute("name", "CAP_QUERY_SUBQUERIES_WITH_TOP");
+            CAP_QUERY_SUBQUERIES_WITH_TOP.setAttribute("value", "yes");
+            
+            Element CAP_SUPPORTS_SPLIT_FROM_LEFT= doc.createElement("customization");
+            cs.appendChild(CAP_SUPPORTS_SPLIT_FROM_LEFT);
+            CAP_SUPPORTS_SPLIT_FROM_LEFT.setAttribute("name", "CAP_SUPPORTS_SPLIT_FROM_LEFT");
+            CAP_SUPPORTS_SPLIT_FROM_LEFT.setAttribute("value", "yes");
+            
+            Element CAP_SUPPORTS_SPLIT_FROM_RIGHT= doc.createElement("customization");
+            cs.appendChild(CAP_SUPPORTS_SPLIT_FROM_RIGHT);
+            CAP_SUPPORTS_SPLIT_FROM_RIGHT.setAttribute("name", "CAP_SUPPORTS_SPLIT_FROM_RIGHT");
+            CAP_SUPPORTS_SPLIT_FROM_RIGHT.setAttribute("value", "yes");
+            
+            Element CAP_SUPPORTS_UNION= doc.createElement("customization");
+            cs.appendChild(CAP_SUPPORTS_UNION);
+            CAP_SUPPORTS_UNION.setAttribute("name", "CAP_SUPPORTS_UNION");
+            CAP_SUPPORTS_UNION.setAttribute("value", "yes");
+            
+            Element CAP_QUERY_ALLOW_PARTIAL_AGGREGATION= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_ALLOW_PARTIAL_AGGREGATION);
+            CAP_QUERY_ALLOW_PARTIAL_AGGREGATION.setAttribute("name", "CAP_QUERY_ALLOW_PARTIAL_AGGREGATION");
+            CAP_QUERY_ALLOW_PARTIAL_AGGREGATION.setAttribute("value", "no");
+            
+            Element CAP_QUERY_TIME_REQUIRES_CAST= doc.createElement("customization");
+            cs.appendChild(CAP_QUERY_TIME_REQUIRES_CAST);
+            CAP_QUERY_TIME_REQUIRES_CAST.setAttribute("name", "CAP_QUERY_TIME_REQUIRES_CAST");
+            CAP_QUERY_TIME_REQUIRES_CAST.setAttribute("value", "yes");
+            
+
+            Element cf = doc.createElement("connection-fields");
+            cp.appendChild(cf);
+            cf.setAttribute("file", "connectionFields.xml");
+            
+            Element cm = doc.createElement("connection-metadata");
+            cp.appendChild(cm);
+            cm.setAttribute("file", "connectionMetadata.xml");
+            
+            Element cr = doc.createElement("connection-resolver");
+            cp.appendChild(cr);
+            cr.setAttribute("file", "connectionResolver.tdr");
+            
+            Element dialect = doc.createElement("dialect");
+            cp.appendChild(dialect);
+            dialect.setAttribute("file", "dialect.tdd");
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4"); //정렬 스페이스4칸
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //들여쓰기
+            transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes"); //doc.setXmlStandalone(true); 했을때 붙어서 출력되는부분 개행
+ 
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new FileOutputStream(new File(this.filePath+"/manifest.xml")));
+ 
+            transformer.transform(source, result);
+ 
+            System.out.println("=========END=========");
+ 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+ 
+		return 0;
+	}
 	
 	public int createConnectionMetadtaAfterDeleteFile(String databasename)
 	{
