@@ -37,14 +37,14 @@ public class XMLController extends Thread{
 	public boolean renewMetadata(String server, String port,String id,String passwd,String databasename,String fileName)
 	{
 		System.out.println("파일 리뉴얼 로직 시작");
-
+			existDeleteManifest("/manifest.xml",fileName);
 			existDeleteCreate("/connectionMetadata.xml",databasename);
 			existDeleteCreate("/connectionFields.xml",server,port,id,passwd);
-			existDeleteManifest("/manifest.xml",fileName);
+			
 
 		
 		System.out.println("파일 리뉴얼 로직 종료");
-		return isSuccessFile("/connectionMetadata.xml","/connectionFields.xml");
+		return isSuccessFile("/connectionMetadata.xml","/connectionFields.xml","/manifest.xml");
 
 
 
@@ -55,9 +55,9 @@ public class XMLController extends Thread{
 	
 
 	
-	public boolean isSuccessFile(String fileName1,String fileName2)
+	public boolean isSuccessFile(String fileName1,String fileName2,String fileName3)
 	{
-		if(existFile(fileName1)&&existFile(fileName2))
+		if(existFile(fileName1)&&existFile(fileName2)&&existFile(fileName3))
 		{
 			return true;
 		}
@@ -72,7 +72,7 @@ public class XMLController extends Thread{
 		synchronized(this) {
 			if(existFile(filePath)) deleteFile(filePath);
 			System.out.println("매니패스트 파일 생성중");
-//			createManifestAfterDeleteFile(fileName);
+			createManifestAfterDeleteFile(fileName);
 		}
 
 	}
@@ -142,7 +142,7 @@ public class XMLController extends Thread{
             cp.setAttribute("class", "postgres_jdbc");
             cp.setAttribute("superclass", "jdbc");
             cp.setAttribute("plugin-version", "0.0.0");
-            cp.setAttribute("name", "PostgreSQL JDBC");
+            cp.setAttribute("name", fileName);
             cp.setAttribute("version", "18.1");
             cp.setAttribute("min-version-tableau", "2020.4");
             

@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <connection-metadata>
-  <database enabled='true'>
-    <field />
-  </database>
-  <schema enabled='false' />
+    <database enabled="true">
+        <field default-value="1"/>
+    </database>
+    <schema enabled="false"/>
 </connection-metadata>
