@@ -1,35 +1,35 @@
-2022-08-19 18:07:54,607 [DEBUG] | Starting Tableau Connector Packaging Version 2.1.0
-2022-08-19 18:07:54,608 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\manifest.xml
-2022-08-19 18:07:54,608 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionFields.xml
-2022-08-19 18:07:54,609 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionMetadata.xml
-2022-08-19 18:07:54,609 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionResolver.tdr
-2022-08-19 18:07:54,609 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\dialect.tdd
-2022-08-19 18:07:54,611 [DEBUG] | No loc files.
-2022-08-19 18:07:54,612 [DEBUG] | Generated file list:
-2022-08-19 18:07:54,612 [DEBUG] | -- manifest.xml
-2022-08-19 18:07:54,612 [DEBUG] | -- connectionFields.xml
-2022-08-19 18:07:54,612 [DEBUG] | -- connectionMetadata.xml
-2022-08-19 18:07:54,612 [DEBUG] | -- connectionResolver.tdr
-2022-08-19 18:07:54,612 [DEBUG] | -- connectionBuilder.js
-2022-08-19 18:07:54,612 [DEBUG] | -- connectionProperties.js
-2022-08-19 18:07:54,612 [DEBUG] | -- dialect.tdd
-2022-08-19 18:07:54,612 [DEBUG] | Starting XSD validation...
-2022-08-19 18:07:54,612 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\manifest.xml
-2022-08-19 18:07:54,719 [DEBUG] | XML validation successful
-2022-08-19 18:07:54,719 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\connectionFields.xml
-2022-08-19 18:07:54,731 [DEBUG] | XML validation successful
-2022-08-19 18:07:54,731 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\connectionMetadata.xml
-2022-08-19 18:07:54,736 [DEBUG] | XML validation successful
-2022-08-19 18:07:54,736 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\connectionResolver.tdr
-2022-08-19 18:07:54,752 [DEBUG] | XML validation successful
-2022-08-19 18:07:54,752 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\dialect.tdd
-2022-08-19 18:07:54,846 [DEBUG] | XML validation successful
-2022-08-19 18:07:54,848 [DEBUG] | No XML violations found
-2022-08-19 18:07:54,848 [DEBUG] | 7 xml files parsed.
-2022-08-19 18:07:54,848 [INFO] | Validation succeeded.
+2022-08-19 18:28:49,601 [DEBUG] | Starting Tableau Connector Packaging Version 2.1.0
+2022-08-19 18:28:49,601 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\manifest.xml
+2022-08-19 18:28:49,601 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionFields.xml
+2022-08-19 18:28:49,605 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionMetadata.xml
+2022-08-19 18:28:49,608 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\connectionResolver.tdr
+2022-08-19 18:28:49,608 [DEBUG] | Parsing ..\samples\plugins\postgres_jdbc\dialect.tdd
+2022-08-19 18:28:49,610 [DEBUG] | No loc files.
+2022-08-19 18:28:49,610 [DEBUG] | Generated file list:
+2022-08-19 18:28:49,610 [DEBUG] | -- manifest.xml
+2022-08-19 18:28:49,610 [DEBUG] | -- connectionFields.xml
+2022-08-19 18:28:49,610 [DEBUG] | -- connectionMetadata.xml
+2022-08-19 18:28:49,610 [DEBUG] | -- connectionResolver.tdr
+2022-08-19 18:28:49,610 [DEBUG] | -- connectionBuilder.js
+2022-08-19 18:28:49,610 [DEBUG] | -- connectionProperties.js
+2022-08-19 18:28:49,610 [DEBUG] | -- dialect.tdd
+2022-08-19 18:28:49,610 [DEBUG] | Starting XSD validation...
+2022-08-19 18:28:49,610 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\manifest.xml
+2022-08-19 18:28:49,717 [DEBUG] | XML validation successful
+2022-08-19 18:28:49,717 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\connectionFields.xml
+2022-08-19 18:28:49,728 [DEBUG] | XML validation successful
+2022-08-19 18:28:49,728 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\connectionMetadata.xml
+2022-08-19 18:28:49,734 [DEBUG] | XML validation successful
+2022-08-19 18:28:49,734 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\connectionResolver.tdr
+2022-08-19 18:28:49,751 [DEBUG] | XML validation successful
+2022-08-19 18:28:49,751 [DEBUG] | Validating ..\samples\plugins\postgres_jdbc\dialect.tdd
+2022-08-19 18:28:49,847 [DEBUG] | XML validation successful
+2022-08-19 18:28:49,849 [DEBUG] | No XML violations found
+2022-08-19 18:28:49,849 [DEBUG] | 7 xml files parsed.
+2022-08-19 18:28:49,850 [INFO] | Validation succeeded.
 
-2022-08-19 18:07:55,216 [INFO] | Detected minimum Tableau version required: 2020.4
-2022-08-19 18:07:55,216 [INFO] | -Connector uses Connection Dialogs V2, which was added in the 2020.3 release
-2022-08-19 18:07:55,216 [INFO] | -min-tableau-version set to 2020.4, since that is higher than calculated version of 2020.3
-2022-08-19 18:07:55,217 [INFO] | 
+2022-08-19 18:28:50,200 [INFO] | Detected minimum Tableau version required: 2020.4
+2022-08-19 18:28:50,200 [INFO] | -Connector uses Connection Dialogs V2, which was added in the 2020.3 release
+2022-08-19 18:28:50,200 [INFO] | -min-tableau-version set to 2020.4, since that is higher than calculated version of 2020.3
+2022-08-19 18:28:50,209 [INFO] | 
 Taco packaged. To sign taco file, use jarsigner.

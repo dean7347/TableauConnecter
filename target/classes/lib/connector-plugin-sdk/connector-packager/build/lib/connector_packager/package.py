@@ -125,7 +125,6 @@ def main():
         return
 
     package_dest_path = Path(args.dest)
-    # 타코파일 이름 여기서 결정
     package_name = xmlparser.class_name + PACKAGED_EXTENSION
 
     if not jdk_create_jar(path_from_args, files_to_package, package_name, package_dest_path):

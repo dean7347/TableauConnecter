@@ -179,6 +179,36 @@ public class XMLController extends Thread{
             Element cs = doc.createElement("customizations");
             cc.appendChild(cs);
             
+            
+            
+            
+            Element CAP_FAST_METADATA= doc.createElement("customization");
+            cs.appendChild(CAP_FAST_METADATA);
+            CAP_FAST_METADATA.setAttribute("name", "CAP_FAST_METADATA");
+            CAP_FAST_METADATA.setAttribute("value", "yes");
+            
+            Element CAP_JDBC_METADATA_GET_INDEX_INFO= doc.createElement("customization");
+            cs.appendChild(CAP_JDBC_METADATA_GET_INDEX_INFO);
+            CAP_JDBC_METADATA_GET_INDEX_INFO.setAttribute("name", "CAP_JDBC_METADATA_GET_INDEX_INFO");
+            CAP_JDBC_METADATA_GET_INDEX_INFO.setAttribute("value", "no");
+            
+            Element CAP_JDBC_METADATA_READ_FOREIGNKEYS= doc.createElement("customization");
+            cs.appendChild(CAP_JDBC_METADATA_READ_FOREIGNKEYS);
+            CAP_JDBC_METADATA_READ_FOREIGNKEYS.setAttribute("name", "CAP_JDBC_METADATA_READ_FOREIGNKEYS");
+            CAP_JDBC_METADATA_READ_FOREIGNKEYS.setAttribute("value", "no");
+            
+            Element CAP_JDBC_METADATA_READ_PRIMARYKEYS= doc.createElement("customization");
+            cs.appendChild(CAP_JDBC_METADATA_READ_PRIMARYKEYS);
+            CAP_JDBC_METADATA_READ_PRIMARYKEYS.setAttribute("name", "CAP_JDBC_METADATA_READ_PRIMARYKEYS");
+            CAP_JDBC_METADATA_READ_PRIMARYKEYS.setAttribute("value", "no");
+            
+            Element CAP_JDBC_METADATA_USE_RESULTSET_FOR_TABLE= doc.createElement("customization");
+            cs.appendChild(CAP_JDBC_METADATA_USE_RESULTSET_FOR_TABLE);
+            CAP_JDBC_METADATA_USE_RESULTSET_FOR_TABLE.setAttribute("name", "CAP_JDBC_METADATA_USE_RESULTSET_FOR_TABLE");
+            CAP_JDBC_METADATA_USE_RESULTSET_FOR_TABLE.setAttribute("value", "no");
+            
+            
+            
             Element csi= doc.createElement("customization");
             cs.appendChild(csi);
             csi.setAttribute("name", "CAP_SELECT_INTO");
