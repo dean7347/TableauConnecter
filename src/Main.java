@@ -1,6 +1,8 @@
 import java.io.File;
 import java.util.Scanner;
 
+import org.w3c.dom.CDATASection;
+
 import Util.UtillMethod;
 import Util.XMLController;
 
@@ -17,6 +19,8 @@ public class Main {
 		String databasename = "";
 		String fileName ="";
 		String tacoFileName = "postgres_jdbc.taco";
+		String userid = "";
+		String userpass="";
 		UtillMethod um = new UtillMethod();
 		String os = System.getProperty("os.name").toLowerCase();
 		// ide ./src/lib/connector-plugin-sdk/samples/plugins/postgres_jdbc
@@ -42,7 +46,7 @@ public class Main {
 		System.out.println("ID : " + id);
 		System.out.println("Password :" + passwd);
 		System.out.println("파일명 : "+fileName);
-		sc.close();
+		
 
 		/* db 연결 테스트 수행 */
 
@@ -57,8 +61,20 @@ public class Main {
 		}
 
 		System.out.println("db 커넥션 테스트성공");
-
-		/* 사전 파일 정보 */
+		
+		
+		System.out.println("사용할 USERID를 입력해주세요(생성)");
+		userid=sc.next();
+		System.out.println("사용할 PASSWORD를 입력해주세요(생성)");
+		userpass=sc.next();
+		sc.close();
+		/* 사전 타코파일 삭제 */
+		String[] deleteTaco= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"sudo rm -rf "+fileName+".taco"};
+		
+//		String[] dropTacoStrings= {"/bin/sh","-c ","mv ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ./"+fileName+".taco"};
+		// 타코파일 떨어뜨리기
+		System.out.println(um.execCmd(deleteTaco));
+		xc.createconnctionPropserties(id,passwd,userid,userpass);
 
 		boolean makeFileResult = xc.renewMetadata(server, port, id, passwd, databasename,fileName);
 
@@ -89,16 +105,19 @@ public class Main {
 			
 			System.out.println(um.execCmd(cmdStrings));
 			System.out.println("=-=-=-=-=-=-=-=-=-");
+			//타코파일 이름변경
+			String[] changeTacoStrings= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
 			
 //			String[] dropTacoStrings= {"/bin/sh","-c ","mv ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ./"+fileName+".taco"};
 			// 타코파일 떨어뜨리기
-//			System.out.println(um.execCmd(dropTacoStrings));
+			System.out.println(um.execCmd(changeTacoStrings));
 			
 		}
 
 //		 xml파일 삭제
 		xc.deleteFile("/connectionMetadata.xml");
 		xc.deleteFile("/connectionFields.xml");
+		xc.deleteFile("/connectionProperties.js");
 //		
 
 

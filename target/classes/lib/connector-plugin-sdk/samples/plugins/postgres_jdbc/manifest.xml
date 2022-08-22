@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<connector-plugin class="postgres_jdbc" min-version-tableau="2020.4" name="testtaco" plugin-version="0.0.0" superclass="jdbc" version="18.1">
+<connector-plugin class="postgres_jdbc" min-version-tableau="2020.4" name="newtaco" plugin-version="0.0.0" superclass="jdbc" version="18.1">
     <vendor-information>
         <company name="BIGXDATA"/>
         <support-link url="https://bigxdata.io"/>
@@ -9,6 +9,11 @@
         <vendor name="vendor"/>
         <driver name="driver"/>
         <customizations>
+            <customization name="CAP_FAST_METADATA" value="yes"/>
+            <customization name="CAP_JDBC_METADATA_GET_INDEX_INFO" value="no"/>
+            <customization name="CAP_JDBC_METADATA_READ_FOREIGNKEYS" value="no"/>
+            <customization name="CAP_JDBC_METADATA_READ_PRIMARYKEYS" value="no"/>
+            <customization name="CAP_JDBC_METADATA_USE_RESULTSET_FOR_TABLE" value="no"/>
             <customization name="CAP_SELECT_INTO" value="yes"/>
             <customization name="CAP_SELECT_TOP_INTO" value="yes"/>
             <customization name="CAP_CREATE_TEMP_TABLES" value="no"/>

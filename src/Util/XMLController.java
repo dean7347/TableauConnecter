@@ -1,7 +1,10 @@
 package Util;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Enumeration;
@@ -28,6 +31,88 @@ public class XMLController extends Thread{
 	
 		
 		this.filePath=filePath;
+	}
+	
+	
+	
+	public void createconnctionPropserties(String dbUser,String dbPassword,String userId,String userpasswd)
+	{
+	    String filePath = this.filePath+"/connectionProperties.js";
+
+        File file = new File(filePath); // File객체 생성
+        if(!file.exists()){ // 파일이 존재하지 않으면
+            try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // 신규생성
+        }else {
+			//파일존재하면 삭제
+        	deleteFile("/connectionProperties.js");
+		}
+
+        // BufferedWriter 생성
+        BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter(file, true));
+	        // 파일에 쓰기
+	        writer.write("(function propertiesbuilder(attr) {");
+	        writer.newLine();
+	        writer.write("    var props = {};");
+	        writer.newLine();
+	        writer.write("    var DBUSER= \""+dbUser+"\"");
+	        writer.newLine();
+	        writer.write("    var DBPASSWORD = \""+dbPassword+"\"");
+	        writer.newLine();
+	        writer.write("    var USERNAME= \"" +userId+"\"");
+	        writer.newLine();
+	        writer.write("    var USERPASSWORD = \"" +userpasswd+"\"");
+	        writer.newLine();
+	        writer.write(" if(attr[connectionHelper.attributeUsername]== USERNAME"+" &&  attr[connectionHelper.attributePassword]==USERPASSWORD");
+	        writer.newLine();
+	        writer.write("    {");
+	        writer.newLine();
+	        writer.write("        props[\"user\"] = DBUSER");
+	        writer.newLine();
+	        writer.write("        props[\"password\"] = DBPASSWORD");
+	        writer.newLine();
+	        writer.write("    }else");
+	        writer.newLine();
+	        writer.write("    {");
+	        writer.newLine();
+	        writer.write("        props[\"user\"] = \"\";");
+	        writer.newLine();
+	        writer.write("        props[\"password\"] = \"\";");
+	        writer.newLine();
+	        writer.write("    }");
+	        writer.newLine();
+	        writer.write("    if (attr[connectionHelper.attributeSSLMode] == \"require\") {");
+	        writer.newLine();
+	        writer.write("        props[\"ssl\"] = \"true\";");
+	        writer.newLine();
+	        writer.write("        props[\"sslmode\"] = \"require\";");
+	        writer.newLine();
+	        writer.write("    }\r\n"
+	        		+ "");
+	        writer.newLine();
+	        writer.write("    return props;");
+	        writer.newLine();
+	        writer.write("})");
+	        writer.newLine();
+	        writer.write("");
+	        writer.newLine();
+
+	        // 버퍼 및 스트림 뒷정리
+	        writer.flush(); // 버퍼의 남은 데이터를 모두 쓰기
+	        writer.close(); // 스트림 종료
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
 	}
 	
 	
