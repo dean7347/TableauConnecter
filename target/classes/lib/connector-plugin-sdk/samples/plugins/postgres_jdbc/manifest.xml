@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<connector-plugin class="postgres_jdbc" min-version-tableau="2020.4" name="asdfvv" plugin-version="0.0.0" superclass="jdbc" version="18.1">
+<connector-plugin class="postgres_jdbc" min-version-tableau="2020.4" name="tata" plugin-version="0.0.0" superclass="jdbc" version="18.1">
     <vendor-information>
         <company name="BIGXDATA"/>
         <support-link url="https://bigxdata.io"/>
