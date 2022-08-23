@@ -50,15 +50,15 @@ public class Main {
 
 		/* db 연결 테스트 수행 */
 
-//		try {
-//			um.jdbcConnectionTest("jdbc:vertica://" + server + ":" + port + "/" + databasename + "?", id, passwd);
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			System.out.println("db커넥션 테스트에 실패했습니다");
-//			System.exit(0);
-//			return;
-//		}
+		try {
+			um.jdbcConnectionTest("jdbc:vertica://" + server + ":" + port + "/" + databasename + "?", id, passwd);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("db커넥션 테스트에 실패했습니다");
+			System.exit(0);
+			return;
+		}
 
 		System.out.println("db 커넥션 테스트성공");
 		
@@ -140,11 +140,11 @@ public class Main {
 			}
 			System.out.println("=-=-=-=-=-=-=-=-=-");
 			//타코파일 이름변경
-//			String[] changeTacoStrings= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
+			String[] changeTacoStrings= {"/bin/sh","-c ","sudo mkdir here" };//"cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"sudo rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
 			
 //			String[] dropTacoStrings= {"/bin/sh","-c ","mv ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ./"+fileName+".taco"};
 			// 타코파일 떨어뜨리기
-//			System.out.println(um.execCmd(changeTacoStrings));
+			System.out.println(um.execCmd(changeTacoStrings));
 			
 		}
 
