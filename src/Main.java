@@ -1,7 +1,7 @@
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
-
-import org.w3c.dom.CDATASection;
 
 import Util.UtillMethod;
 import Util.XMLController;
@@ -105,13 +105,39 @@ public class Main {
 			// 타코파일 떨어뜨리기
 			System.out.println(um.execCmd(deleteTaco).toString());
 			//쉘스크립트로 실행하기
+//	        try {
+//	            // Run script
+//	            Process process = Runtime.getRuntime().exec("sh ./test.sh");
+//
+//	            // Read output
+//	            StringBuilder output = new StringBuilder();
+//	            BufferedReader reader = new BufferedReader(
+//	                    new InputStreamReader(process.getInputStream()));
+//
+//	            String line;
+//	            while ((line = reader.readLine()) != null) {
+//	                output.append(line);
+//	            }
+//
+//	            System.out.println(output.toString());
+//
+//	        } catch (Exception e) {
+//	            e.printStackTrace();
+//	        }
+	        ////
 			
-			String[] cmdStrings= {"/bin/sh","-c ","source cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate && "
-					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc"};
+//			String[] cmdStrings= {"/bin/sh","-c ","source cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate && "
+//					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc"};
+			String cmdString = "cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate ; "
+					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc";
 			
-			
-			System.out.println(um.execCmd(cmdStrings).toString());
-		
+//			System.out.println(um.execCmd(cmdStrings).toString());
+			try {
+				Process pr = new ProcessBuilder("/bin/bash", "-c", ". env.sh; " + cmdString).start();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println("=-=-=-=-=-=-=-=-=-");
 			//타코파일 이름변경
 //			String[] changeTacoStrings= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
