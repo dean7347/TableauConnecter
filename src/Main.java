@@ -51,7 +51,7 @@ public class Main {
 		/* db 연결 테스트 수행 */
 
 		try {
-			um.jdbcConnectionTest("jdbc:postgresql://" + server + ":" + port + "/" + databasename + "?", id, passwd);
+			um.jdbcConnectionTest("jdbc:vertica://" + server + ":" + port + "/" + databasename + "?", id, passwd);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,17 +63,12 @@ public class Main {
 		System.out.println("db 커넥션 테스트성공");
 		
 		
-		System.out.println("사용할 USERID를 입력해주세요(생성)");
-		userid=sc.next();
-		System.out.println("사용할 PASSWORD를 입력해주세요(생성)");
-		userpass=sc.next();
+//		System.out.println("사용할 USERID를 입력해주세요(생성)");
+		userid="omp_user";
+//		System.out.println("사용할 PASSWORD를 입력해주세요(생성)");
+		userpass="shinhan@1";
 		sc.close();
-		/* 사전 타코파일 삭제 */
-		String[] deleteTaco= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"sudo rm -rf "+fileName+".taco"};
-		
-//		String[] dropTacoStrings= {"/bin/sh","-c ","mv ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ./"+fileName+".taco"};
-		// 타코파일 떨어뜨리기
-		System.out.println(um.execCmd(deleteTaco));
+	
 		xc.createconnctionPropserties(id,passwd,userid,userpass);
 
 		boolean makeFileResult = xc.renewMetadata(server, port, id, passwd, databasename,fileName);
@@ -86,6 +81,9 @@ public class Main {
 		System.out.println(".taco파일 생성 시작");
 		// 매니페스트 지우고 생성되면 완료 빌더파일없으면 생성이 안됨
 
+		
+		
+		
 		if (os.contains("win")) {
 			System.out.println("Windows");
 			System.out.println(um.execCmd("powershell cd " + um.sortJARPath("/connector-plugin-sdk/connector-packager")
@@ -99,25 +97,35 @@ public class Main {
 
 		} else{
 			System.out.println("other OS");
-			String[] cmdStrings= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager | python3 -m venv .venv | source ./src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate && "
-					+ " cd  ./src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc"};
+			
+			/* 사전 타코파일 삭제 */
+			String[] deleteTaco= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"sudo rm -rf "+fileName+".taco ; sudo rm -rf postgres_jdbc.taco"};
+			System.out.println("사전 타코파일 삭제 완료");
+//			String[] dropTacoStrings= {"/bin/sh","-c ","mv ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ./"+fileName+".taco"};
+			// 타코파일 떨어뜨리기
+			System.out.println(um.execCmd(deleteTaco).toString());
+			//쉘스크립트로 실행하기
+			
+			String[] cmdStrings= {"/bin/sh","-c ","source cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate && "
+					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc"};
 			
 			
-			System.out.println(um.execCmd(cmdStrings));
+			System.out.println(um.execCmd(cmdStrings).toString());
+		
 			System.out.println("=-=-=-=-=-=-=-=-=-");
 			//타코파일 이름변경
-			String[] changeTacoStrings= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
+//			String[] changeTacoStrings= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
 			
 //			String[] dropTacoStrings= {"/bin/sh","-c ","mv ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ./"+fileName+".taco"};
 			// 타코파일 떨어뜨리기
-			System.out.println(um.execCmd(changeTacoStrings));
+//			System.out.println(um.execCmd(changeTacoStrings));
 			
 		}
 
 //		 xml파일 삭제
-		xc.deleteFile("/connectionMetadata.xml");
-		xc.deleteFile("/connectionFields.xml");
-		xc.deleteFile("/connectionProperties.js");
+//		xc.deleteFile("/connectionMetadata.xml");
+//		xc.deleteFile("/connectionFields.xml");
+//		xc.deleteFile("/connectionProperties.js");
 //		
 
 

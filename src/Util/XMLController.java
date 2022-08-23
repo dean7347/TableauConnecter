@@ -69,7 +69,7 @@ public class XMLController extends Thread{
 	        writer.newLine();
 	        writer.write("    var USERPASSWORD = \"" +userpasswd+"\"");
 	        writer.newLine();
-	        writer.write(" if(attr[connectionHelper.attributeUsername]== USERNAME"+" &&  attr[connectionHelper.attributePassword]==USERPASSWORD");
+	        writer.write(" if((attr[connectionHelper.attributeUsername]== USERNAME)"+" &&  (attr[connectionHelper.attributePassword]==USERPASSWORD))");
 	        writer.newLine();
 	        writer.write("    {");
 	        writer.newLine();
@@ -538,7 +538,7 @@ public class XMLController extends Thread{
             username.setAttribute("label", "Username");
             username.setAttribute("value-type", "string");
             username.setAttribute("category", "authentication");
-            username.setAttribute("default-value", id);
+            username.setAttribute("default-value", "Your ID");
             
             Element password =doc.createElement("field");
             cf.appendChild(password);
@@ -547,7 +547,7 @@ public class XMLController extends Thread{
             password.setAttribute("value-type", "string");
             password.setAttribute("category", "authentication");
             password.setAttribute("secure", "true");
-            password.setAttribute("default-value", passwd);
+            password.setAttribute("default-value", "Yourpasswd");
             
             Element sslmode =doc.createElement("field");
             cf.appendChild(sslmode);

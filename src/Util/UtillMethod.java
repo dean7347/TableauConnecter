@@ -85,8 +85,11 @@ public class UtillMethod {
 			sb.append(cmd);
 			while ((line = reader.readLine()) != null) {
 				sb.append(line);
+				System.out.println(line);
 				sb.append("\n");
+				
 			}
+			
 			
 			return sb.toString();
 		} catch (Exception e) {
