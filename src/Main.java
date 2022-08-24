@@ -129,7 +129,8 @@ public class Main {
 //			String[] cmdStrings= {"/bin/sh","-c ","source cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate && "
 //					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc"};
 			String cmdString = "cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate ; "
-					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc";
+					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc ; deactivate ;"
+					+ "cd packaged-connector ;sudo mv postgres_jdbc.taco "+fileName+".taco";
 			
 //			System.out.println(um.execCmd(cmdStrings).toString());
 			try {
@@ -140,22 +141,38 @@ public class Main {
 			}
 			System.out.println("=-=-=-=-=-=-=-=-=-");
 			//타코파일 이름변경
-			String[] changeTacoStrings= {"/bin/sh","-c ","sudo mkdir here" };//"cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"sudo rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
+//			String[] renameTaco= {"/bin/sh","-c ","cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"sudo mv -f "+"postgres_jdbc.taco "+fileName+".taco"};
+//			System.out.println("타코파일 이름변경");
+			
+			System.gc();
+//			try {
+//				if (um.renameFile("./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/postgres_jdbc.taco", "./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/"+fileName+".taco"))
+//				{
+//					System.out.println("생성성공");
+//				}else {
+//					System.out.println("생성 실패 다시 시도해주세요");
+//				}
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
+//			String[] changeTacoStrings= {"/bin/sh","-c ","sudo mkdir here" };//"cd ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ;" +"sudo rename postgres_jdbc.taco "+fileName+".taco" + "postgres_jdbc.taco"};
 			
 //			String[] dropTacoStrings= {"/bin/sh","-c ","mv ./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/ ./"+fileName+".taco"};
 			// 타코파일 떨어뜨리기
-			System.out.println(um.execCmd(changeTacoStrings));
+//			System.out.println(um.execCmd(changeTacoStrings));
 			
 		}
 
 //		 xml파일 삭제
-//		xc.deleteFile("/connectionMetadata.xml");
-//		xc.deleteFile("/connectionFields.xml");
-//		xc.deleteFile("/connectionProperties.js");
+		xc.deleteFile("/connectionMetadata.xml");
+		xc.deleteFile("/connectionFields.xml");
+		xc.deleteFile("/connectionProperties.js");
 //		
 
 
-		System.out.println("생성완료 프로그램 종료");
+		System.out.println("프로그램 종료");
 		System.exit(0);
 
 	}

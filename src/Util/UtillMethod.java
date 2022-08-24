@@ -2,6 +2,7 @@ package Util;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -40,6 +41,64 @@ public class UtillMethod {
 
 	}
 
+	public boolean renameFile(String originFile, String newFileName) throws IOException
+	{
+//		System.gc();
+////		Runtime.getRuntime().exec("chmod 777 "+originFile);
+////		File file = new File(originFile);
+////		Runtime.getRuntime().exec("chmod 777 "+file);
+////		File changeFile = new File(newFileName);
+////		System.out.println("exe "+file.canExecute()+" read " +file.canRead() + " write "+file.canWrite());
+////		file.setExecutable(true,false);
+////		file.setWritable(true,true);
+////		System.out.println("exe "+file.canExecute()+" read " +file.canRead() + " write "+file.canWrite());
+////		file.renameTo(changeFile);
+//
+//
+//		
+//		./src/lib/connector-plugin-sdk/connector-packager/packaged-connector/
+//		Runtime.getRuntime().exec("cd ");
+		return true;
+ 
+       
+        
+//        if(fileObjOld.exists())
+//        {
+//        	System.out.println("타코파일 생성 확인");
+//        	System.gc();
+//        	
+//        	System.out.println(fileObjOld.renameTo(fileObjNew)+ "쓸수있는가? "+ fileObjOld.);
+//        }else {
+//        	return false;
+//        }
+//        return true;
+        
+        
+        
+//        
+//		if(fileObjOld.renameTo(fileObjNew)) {
+//		System.out.println("File renamed successfully.");
+//		            } else {
+//		System.out.println("Error: File could not be renamed!");
+//		            }
+    }
+	    
+//		Path file =Paths.get(originFile);
+//		Path newFile=Paths.get(newFileName);
+//		System.out.println("파일패스 "+ file);
+//		System.out.println();
+//		 try {
+//			 Path newFilePath = Files.move(file, newFile, StandardCopyOption.REPLACE_EXISTING);
+//		 } catch (Exception e) {
+//			// TODO: handle exception
+//			 System.out.println("파일 찾기 실패"+ System.getProperty("user.dir"));
+//			 
+//			 System.exit(0);
+//			 return 0;
+//		}
+//		
+//		return 1;
+	
 	public int createConnectJSFile() {
 		File file = new File("test.txt");
 		return 0;
