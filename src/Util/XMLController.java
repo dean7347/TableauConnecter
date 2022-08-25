@@ -69,7 +69,7 @@ public class XMLController extends Thread{
 	        writer.newLine();
 	        writer.write("    var USERPASSWORD = \"" +userpasswd+"\"");
 	        writer.newLine();
-	        writer.write(" if((attr[connectionHelper.attributeUsername]== USERNAME)"+" &&  (attr[connectionHelper.attributePassword]==USERPASSWORD))");
+	        writer.write(" if((attr[connectionHelper.attributePassword]==USERPASSWORD))");
 	        writer.newLine();
 	        writer.write("    {");
 	        writer.newLine();
@@ -403,9 +403,11 @@ public class XMLController extends Thread{
             dialect.setAttribute("file", "dialect.tdd");
             
             
-            
-            
-            
+//            
+////            
+//          Element test = doc.createElement("connection-dialog");
+//          cp.appendChild(test);
+//          test.setAttribute("file", "connection-dialog.tcd");
             
             
             
@@ -453,11 +455,17 @@ public class XMLController extends Thread{
             Element field = doc.createElement("field");
             db.appendChild(field);
             field.setAttribute("default-value", databasename);
+            field.setAttribute("optional", "true");
             
             Element schema = doc.createElement("schema");
             cm.appendChild(schema);
-            schema.setAttribute("enabled", "false");
-
+            schema.setAttribute("enabled", "true");
+//            schema.setAttribute("optional", "true");
+            
+            Element table = doc.createElement("table");
+            cm.appendChild(table);
+            table.setAttribute("enabled", "true");
+//            table.setAttribute("optional", "true");
  
             System.out.println("=========END=========");
             // XML 파일로 쓰기
@@ -509,6 +517,8 @@ public class XMLController extends Thread{
             server.setAttribute("value-type","string");
             server.setAttribute("category","endpoint");
             server.setAttribute("default-value", conServer);
+            server.setAttribute("editable", "false");
+            
             
             Element vr = doc.createElement("validation-rule");
             server.appendChild(vr);
@@ -521,7 +531,7 @@ public class XMLController extends Thread{
             port.setAttribute("value-type", "string");
             port.setAttribute("category", "endpoint");
             port.setAttribute("default-value", conPort);
-            
+            port.setAttribute("editable", "false");
             
             Element auth =doc.createElement("field");
             cf.appendChild(auth);
@@ -539,6 +549,7 @@ public class XMLController extends Thread{
             username.setAttribute("value-type", "string");
             username.setAttribute("category", "authentication");
             username.setAttribute("default-value", "Your ID");
+            username.setAttribute("editable", "false");
             
             Element password =doc.createElement("field");
             cf.appendChild(password);
@@ -547,7 +558,7 @@ public class XMLController extends Thread{
             password.setAttribute("value-type", "string");
             password.setAttribute("category", "authentication");
             password.setAttribute("secure", "true");
-            password.setAttribute("default-value", "Yourpasswd");
+            password.setAttribute("default-value", "");
             
             Element sslmode =doc.createElement("field");
             cf.appendChild(sslmode);

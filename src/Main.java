@@ -166,9 +166,9 @@ public class Main {
 		}
 
 //		 xml파일 삭제
-		xc.deleteFile("/connectionMetadata.xml");
-		xc.deleteFile("/connectionFields.xml");
-		xc.deleteFile("/connectionProperties.js");
+//		xc.deleteFile("/connectionMetadata.xml");
+//		xc.deleteFile("/connectionFields.xml");
+//		xc.deleteFile("/connectionProperties.js");
 //		
 
 
