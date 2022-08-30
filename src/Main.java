@@ -129,13 +129,22 @@ public class Main {
 			
 //			String[] cmdStrings= {"/bin/sh","-c ","source cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate && "
 //					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc"};
+			
+			//타코 실행
 			String cmdString = "cd ./src/lib/connector-plugin-sdk/connector-packager ;sudo python3 -m venv .venv ; source ../../../../src/lib/connector-plugin-sdk/connector-packager/.venv/bin/activate ; "
 					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc ; deactivate ;"
 					+ "cd packaged-connector ;sudo mv postgres_jdbc.taco "+fileName+".taco";
 			
 //			System.out.println(um.execCmd(cmdStrings).toString());
+			System.out.println("가상환경 프로세스 실행중");
 			try {
 				Process pr = new ProcessBuilder("/bin/bash", "-c", ". env.sh; " + cmdString).start();
+				while(pr.isAlive())
+				{
+					
+				}
+				System.out.println("프로세스 완료");
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -167,6 +176,8 @@ public class Main {
 		}
 
 //		 xml파일 삭제
+		xc.existFile(tacoFileName);
+		
 		xc.deleteFile("/connectionMetadata.xml");
 		xc.deleteFile("/connectionFields.xml");
 		xc.deleteFile("/connectionProperties.js");
