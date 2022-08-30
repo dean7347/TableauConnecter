@@ -70,6 +70,7 @@ public class Main {
 		sc.close();
 	
 		xc.createconnctionPropserties(id,passwd,userid,userpass);
+		xc.createConnectionBuilder(databasename);
 
 		boolean makeFileResult = xc.renewMetadata(server, port, id, passwd, databasename,fileName);
 
@@ -166,10 +167,10 @@ public class Main {
 		}
 
 //		 xml파일 삭제
-//		xc.deleteFile("/connectionMetadata.xml");
-//		xc.deleteFile("/connectionFields.xml");
-//		xc.deleteFile("/connectionProperties.js");
-//		
+		xc.deleteFile("/connectionMetadata.xml");
+		xc.deleteFile("/connectionFields.xml");
+		xc.deleteFile("/connectionProperties.js");
+		xc.deleteFile("/connectionBuilder.js");
 
 
 		System.out.println("프로그램 종료");

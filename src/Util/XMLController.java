@@ -116,6 +116,56 @@ public class XMLController extends Thread{
 	}
 	
 	
+
+	public void createConnectionBuilder(String dbname)
+	{
+	    String filePath = this.filePath+"/connectionBuilder.js";
+
+        File file = new File(filePath); // File객체 생성
+        if(!file.exists()){ // 파일이 존재하지 않으면
+            try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // 신규생성
+        }else {
+			//파일존재하면 삭제
+        	deleteFile("/connectionBuilder.js");
+		}
+
+        // BufferedWriter 생성
+        BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter(file, true));
+	        // 파일에 쓰기
+	        writer.write("(function dsbuilder(attr) {");
+	        writer.newLine();
+	        writer.write(" var urlBuilder = \"jdbc:vertica://\" + attr[connectionHelper.attributeServer] + \":\" + attr[connectionHelper.attributePort] + \"/\" + \""+dbname+"\" + \"?\";");
+	        writer.newLine();
+	      
+	        writer.write("return [urlBuilder];");
+	        writer.newLine();
+	      
+	        writer.write("})");
+	        writer.newLine();
+	      
+	      
+
+	        // 버퍼 및 스트림 뒷정리
+	        writer.flush(); // 버퍼의 남은 데이터를 모두 쓰기
+	        writer.close(); // 스트림 종료
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
+	}
+	
+	
+	
 	
 	
 	//커넥션 메타데이터 삭제 생성 로직
@@ -125,7 +175,7 @@ public class XMLController extends Thread{
 			existDeleteManifest("/manifest.xml",fileName);
 			existDeleteCreate("/connectionMetadata.xml",databasename);
 			existDeleteCreate("/connectionFields.xml",server,port,id,passwd);
-			
+		
 
 		
 		System.out.println("파일 리뉴얼 로직 종료");
@@ -402,9 +452,8 @@ public class XMLController extends Thread{
             cp.appendChild(dialect);
             dialect.setAttribute("file", "dialect.tdd");
             
-            
-//            
-////            
+                       
+    
 //          Element test = doc.createElement("connection-dialog");
 //          cp.appendChild(test);
 //          test.setAttribute("file", "connection-dialog.tcd");
@@ -532,6 +581,16 @@ public class XMLController extends Thread{
             port.setAttribute("category", "endpoint");
             port.setAttribute("default-value", conPort);
             port.setAttribute("editable", "false");
+            
+//            
+//            Element dbn =doc.createElement("field");
+//            cf.appendChild(dbn);
+//            dbn.setAttribute("name", "database");
+//            dbn.setAttribute("label", "data");
+//            dbn.setAttribute("value-type", "string");
+//            dbn.setAttribute("category", "endpoint");
+//            dbn.setAttribute("default-value", "gg");
+//            dbn.setAttribute("editable", "false");
             
             Element auth =doc.createElement("field");
             cf.appendChild(auth);
