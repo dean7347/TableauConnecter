@@ -50,15 +50,15 @@ public class Main {
 
 		/* db 연결 테스트 수행 */
 
-		try {
-			um.jdbcConnectionTest("jdbc:vertica://" + server + ":" + port + "/" + databasename + "?", id, passwd);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("db커넥션 테스트에 실패했습니다");
-			System.exit(0);
-			return;
-		}
+//		try {
+//			um.jdbcConnectionTest("jdbc:vertica://" + server + ":" + port + "/" + databasename + "?", id, passwd);
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			System.out.println("db커넥션 테스트에 실패했습니다");
+//			System.exit(0);
+//			return;
+//		}
 
 		System.out.println("db 커넥션 테스트성공");
 		

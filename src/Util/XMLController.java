@@ -277,7 +277,7 @@ public class XMLController extends Thread{
             cp.setAttribute("class", "postgres_jdbc");
             cp.setAttribute("superclass", "jdbc");
             cp.setAttribute("plugin-version", "0.0.0");
-            cp.setAttribute("name", "SHB_Vertica");
+            cp.setAttribute("name", "Vertica");
             cp.setAttribute("version", "18.1");
             cp.setAttribute("min-version-tableau", "2020.4");
             
@@ -287,7 +287,7 @@ public class XMLController extends Thread{
             
             Element company= doc.createElement("company");
             vi.appendChild(company);
-            company.setAttribute("name", "BIGXDATA");
+            company.setAttribute("name", "SHB");
             
             Element spl= doc.createElement("support-link");
             vi.appendChild(spl);
