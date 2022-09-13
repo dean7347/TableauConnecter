@@ -1,3 +1,0 @@
-DATEDIFF('year', [date3], [date2])
-DATEDIFF('year', DATETIME([date2]), [datetime0])
-

@@ -1,3 +1,0 @@
-DATEDIFF('second', DATETIME([date2]), [datetime0], 'monday')
-DATEDIFF('second', DATETIME([date2]), [datetime0], 'sunday')
-

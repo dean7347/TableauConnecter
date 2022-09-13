@@ -1,3 +1,0 @@
-DATETRUNC('second', [datetime0], 'monday')
-DATETRUNC('second', [datetime0], 'sunday')
-

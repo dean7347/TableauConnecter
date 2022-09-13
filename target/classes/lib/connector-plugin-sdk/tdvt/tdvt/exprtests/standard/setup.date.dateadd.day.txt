@@ -1,4 +1,0 @@
-DATEADD('day', 1, [date2])
-
-DATEADD('day', 1, [datetime0])
-

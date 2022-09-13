@@ -1,2 +1,0 @@
-REGEXP_REPLACE([str0], 'OFFICE', 'ZZZ')
-REGEXP_REPLACE([str0], 'Z', 'o')

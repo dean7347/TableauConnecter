@@ -1,2 +1,0 @@
-DATETRUNC('minute', [datetime0])
-

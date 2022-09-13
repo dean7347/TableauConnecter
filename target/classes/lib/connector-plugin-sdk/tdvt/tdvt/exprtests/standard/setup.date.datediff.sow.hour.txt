@@ -1,3 +1,0 @@
-DATEDIFF('hour', DATETIME([date2]), [datetime0], 'monday')
-DATEDIFF('hour', DATETIME([date2]), [datetime0], 'sunday')
-

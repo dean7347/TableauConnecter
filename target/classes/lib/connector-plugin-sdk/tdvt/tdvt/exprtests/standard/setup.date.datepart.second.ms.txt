@@ -1,1 +1,0 @@
-DATEPART('second', DATETIME('2010-10-10 10:10:10.4'))

@@ -1,2 +1,0 @@
-ENDSWITH([str2], Null)
-ENDSWITH([str1], Null)

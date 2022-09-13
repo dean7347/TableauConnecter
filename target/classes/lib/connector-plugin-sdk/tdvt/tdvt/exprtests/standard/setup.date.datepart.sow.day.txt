@@ -1,6 +1,0 @@
-DATEPART('day', [date2], 'monday')
-DATEPART('day', [date2], 'sunday')
-
-DATEPART('day', [datetime0], 'monday')
-DATEPART('day', [datetime0], 'sunday')
-

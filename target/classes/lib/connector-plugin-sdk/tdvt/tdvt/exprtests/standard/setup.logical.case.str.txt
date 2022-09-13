@@ -1,2 +1,0 @@
-case [str0] when 'TECHNOLOGY' then '*Anonymous*'  else [str0] end
-

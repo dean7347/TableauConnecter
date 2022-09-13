@@ -1,2 +1,0 @@
-ATAN([int2])
-atan(num0)

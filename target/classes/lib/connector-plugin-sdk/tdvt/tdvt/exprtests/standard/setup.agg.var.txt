@@ -1,2 +1,0 @@
-VAR([num4])
-VARP([num4])

@@ -1,3 +1,0 @@
-DATEPART('week', [date2])
-DATEPART('week', DATE([date3]))
-DATEPART('week', [datetime0])

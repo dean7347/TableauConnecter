@@ -1,2 +1,0 @@
-DATENAME('minute', [datetime0])
-

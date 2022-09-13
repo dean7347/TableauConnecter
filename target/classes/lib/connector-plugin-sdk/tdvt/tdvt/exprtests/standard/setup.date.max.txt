@@ -1,3 +1,0 @@
-MAX([date2])
-MAX([date2], [date3])
-MAX([datetime0])

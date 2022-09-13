@@ -1,3 +1,0 @@
-DATENAME('minute', [datetime0], 'monday')
-DATENAME('minute', [datetime0], 'sunday')
-

@@ -1,2 +1,0 @@
-DATETRUNC('second', [datetime0])
-

@@ -1,2 +1,0 @@
-RADIANS([int2])
-radians(num0)

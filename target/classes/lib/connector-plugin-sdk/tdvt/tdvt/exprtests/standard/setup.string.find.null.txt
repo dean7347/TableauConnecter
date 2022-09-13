@@ -1,2 +1,0 @@
-FIND([str1], Null)
-FIND([str2], Null)

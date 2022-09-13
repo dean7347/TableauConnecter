@@ -1,4 +1,0 @@
-DATETRUNC('month', [date2])
-
-DATETRUNC('month', [datetime0])
-

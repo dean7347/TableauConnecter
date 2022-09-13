@@ -1,1 +1,0 @@
-DATENAME('second', [datetime0])
