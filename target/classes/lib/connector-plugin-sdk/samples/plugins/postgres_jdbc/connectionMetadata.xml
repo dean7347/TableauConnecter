@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <connection-metadata>
     <database enabled="true">
-        <field default-value="postgres"/>
+        <field default-value="1" optional="true"/>
     </database>
-    <schema enabled="false"/>
+    <schema enabled="true"/>
+    <table enabled="true"/>
 </connection-metadata>

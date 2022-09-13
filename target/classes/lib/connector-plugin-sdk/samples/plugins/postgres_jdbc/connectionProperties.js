@@ -1,10 +1,10 @@
 (function propertiesbuilder(attr) {
     var props = {};
-    var DBUSER= "postgres"
-    var DBPASSWORD = "passwd"
+    var DBUSER= "1"
+    var DBPASSWORD = "1"
     var USERNAME= "omp_user"
     var USERPASSWORD = "shinhan@1"
- if((attr[connectionHelper.attributeUsername]== USERNAME) &&  (attr[connectionHelper.attributePassword]==USERPASSWORD))
+ if((attr[connectionHelper.attributePassword]==USERPASSWORD))
     {
         props["user"] = DBUSER
         props["password"] = DBPASSWORD

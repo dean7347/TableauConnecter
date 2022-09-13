@@ -436,13 +436,13 @@ public class XMLController extends Thread{
             CAP_QUERY_TIME_REQUIRES_CAST.setAttribute("value", "yes");
             
 
-            Element cf = doc.createElement("connection-fields");
-            cp.appendChild(cf);
-            cf.setAttribute("file", "connectionFields.xml");
-            
-            Element cm = doc.createElement("connection-metadata");
-            cp.appendChild(cm);
-            cm.setAttribute("file", "connectionMetadata.xml");
+//            Element cf = doc.createElement("connection-fields");
+//            cp.appendChild(cf);
+//            cf.setAttribute("file", "connectionFields.xml");
+//            
+//            Element cm = doc.createElement("connection-metadata");
+//            cp.appendChild(cm);
+//            cm.setAttribute("file", "connectionMetadata.xml");
             
             Element cr = doc.createElement("connection-resolver");
             cp.appendChild(cr);
@@ -453,7 +453,7 @@ public class XMLController extends Thread{
             dialect.setAttribute("file", "dialect.tdd");
             
                        
-    
+//    
 //          Element test = doc.createElement("connection-dialog");
 //          cp.appendChild(test);
 //          test.setAttribute("file", "connection-dialog.tcd");
@@ -497,14 +497,14 @@ public class XMLController extends Thread{
             Element cm= doc.createElement("connection-metadata");
             doc.appendChild(cm);
             
-            Element db= doc.createElement("database");
-            cm.appendChild(db);
-            db.setAttribute("enabled","true");
-            
-            Element field = doc.createElement("field");
-            db.appendChild(field);
-            field.setAttribute("default-value", databasename);
-            field.setAttribute("optional", "true");
+//            Element db= doc.createElement("database");
+//            cm.appendChild(db);
+//            db.setAttribute("enabled","true");
+//            
+//            Element field = doc.createElement("field");
+//            db.appendChild(field);
+//            field.setAttribute("default-value", databasename);
+//            field.setAttribute("optional", "true");
             
             Element schema = doc.createElement("schema");
             cm.appendChild(schema);

@@ -135,7 +135,7 @@ public class Main {
 					+ " cd  ../../../../src/lib/connector-plugin-sdk/connector-packager/ ; sudo python3 setup.py install  ; sudo python3 -m connector_packager.package ../samples/plugins/postgres_jdbc ; deactivate ;"
 					+ "cd packaged-connector ;sudo mv postgres_jdbc.taco "+fileName+".taco";
 			
-//			System.out.println(um.execCmd(cmdStrings).toString());
+//			System.out.println(um.ecCmd(cmdStrings).toString());
 			System.out.println("가상환경 프로세스 실행중");
 			try {
 				Process pr = new ProcessBuilder("/bin/bash", "-c", ". env.sh; " + cmdString).start();
@@ -176,12 +176,11 @@ public class Main {
 		}
 
 //		 xml파일 삭제
-		xc.existFile(tacoFileName);
-		
-		xc.deleteFile("/connectionMetadata.xml");
-		xc.deleteFile("/connectionFields.xml");
-		xc.deleteFile("/connectionProperties.js");
-		xc.deleteFile("/connectionBuilder.js");
+//		xc.existFile(tacoFileName);		
+//		xc.deleteFile("/connectionMetadata.xml");
+//		xc.deleteFile("/connectionFields.xml");
+//		xc.deleteFile("/connectionProperties.js");
+//		xc.deleteFile("/connectionBuilder.js");
 
 
 		System.out.println("프로그램 종료");
