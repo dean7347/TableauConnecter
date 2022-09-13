@@ -436,13 +436,13 @@ public class XMLController extends Thread{
             CAP_QUERY_TIME_REQUIRES_CAST.setAttribute("value", "yes");
             
 
-//            Element cf = doc.createElement("connection-fields");
-//            cp.appendChild(cf);
-//            cf.setAttribute("file", "connectionFields.xml");
-//            
-//            Element cm = doc.createElement("connection-metadata");
-//            cp.appendChild(cm);
-//            cm.setAttribute("file", "connectionMetadata.xml");
+            Element cf = doc.createElement("connection-fields");
+            cp.appendChild(cf);
+            cf.setAttribute("file", "connectionFields.xml");
+            
+            Element cm = doc.createElement("connection-metadata");
+            cp.appendChild(cm);
+            cm.setAttribute("file", "connectionMetadata.xml");
             
             Element cr = doc.createElement("connection-resolver");
             cp.appendChild(cr);
